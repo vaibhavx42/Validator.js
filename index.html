@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Checksum Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+  body.dark-mode {
+    background-color: #1f1f1f;
+    color: #ffffff;
+  }
+
+  .dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+</style>
+
+<body>
+
+  <div class="header">
+    <h1 style="text-align: center;  font-size: large; font-weight: 600; font-family: cursive;">Checksum Validator</h1>
+    <p style="text-align: center;  font-size: large; font-weight: 600; font-family: cursive;">This checksum validator
+      allows you to validate various identification numbers and codes<br>This includes mobile numbers,
+      Aadhaar, PAN, GST, PIN codes, IMEI, and TAN.<br>Choose the type of validation, enter the value, and click
+      'Validate'.
+    </p>
+  </div>
+
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+  </div>
+
+
+
+  <div class="image-container">
+    <div>
+      <img src="id_img.png" alt="Your Image" class="responsive-image">
+    </div>
+    <div>
+      <select id="validationType">
+        <option value="mobile">Mobile</option>
+        <option value="aadhaar">Aadhaar</option>
+        <option value="aadhaarVID">Aadhaar VID</option>
+        <option value="pan">PAN</option>
+        <option value="gst">GST</option>
+        <option value="pincode">Pincode</option>
+        <option value="imei">IMEI</option>
+        <option value="tan">TAN</option>
+      </select>
+      <br>
+      <input type="text" id="inputValue" placeholder="Enter value to validate">
+      <button onclick="performValidation()">Validate</button>
+    </div>
+
+  </div>
+
+  <div>
+    <div id="validationResult"></div>
+
+    <!-- ... (existing code) -->
+
+    <div id="validationResult" class="validation-result">
+      <!-- Initially hidden until validation -->
+      <span id="validStatus" class="valid-status"></span>
+    </div>
+
+  </div>
+
+  <div>
+    <script>
+      // JavaScript function to toggle the dark mode
+      function toggleDarkMode() {
+        var body = document.body;
+        body.classList.toggle('dark-mode');
+
+        // Store the user's dark mode preference in local storage
+        var isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+      }
+
+      // Check if the user has a dark mode preference stored in local storage
+      var storedDarkMode = localStorage.getItem('darkMode');
+      if (storedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    </script>
+    <script src="checksum.js"></script>
+    <div class="footer">
+      Made with <span class="heart">&#10084</span> by <a target="_blank" 
+        href="https://github.com/vaibhavx42">Vaibhav Bhardwaj</a>
+    </div>
+</body>
+
+</html>
